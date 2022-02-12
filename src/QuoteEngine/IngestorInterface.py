@@ -3,8 +3,9 @@ from typing import List
 
 from .Quote import QuoteModel
 
-class IngestorInterface(ABC):
 
+class IngestorInterface(ABC):
+    '''insert docstring'''
     allowed_types = []  # 'pdf', 'docx', 'txt', 'csv'
 
     @classmethod

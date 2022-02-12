@@ -6,10 +6,11 @@ import TextIngestor
 from .Quote import QuoteModel
 from typing import List
 
-#https://knowledge.udacity.com/questions/559464
 
 class Ingestor(IngestorInterface):
+    '''https://knowledge.udacity.com/questions/559464'''
     ingestors = [DocxIngestor, CSVIngestor, TextIngestor, PDFIngestor]
+
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         """Select the appropriate helper for a given file based on filetype."""
