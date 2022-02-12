@@ -2,6 +2,7 @@ import random
 import os
 import requests
 from flask import Flask, render_template, abort, request
+from QuoteEngine import DocxIngestor
 
 # @TODO Import your Ingestor and MemeEngine classes
 
@@ -13,13 +14,18 @@ meme = MemeEngine('./static')
 def setup():
     """ Load all resources """
 
-    quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
+    quote_files = [#'./_data/DogQuotes/DogQuotesTXT.txt',
                    './_data/DogQuotes/DogQuotesDOCX.docx',
-                   './_data/DogQuotes/DogQuotesPDF.pdf',
-                   './_data/DogQuotes/DogQuotesCSV.csv']
+                   #'./_data/DogQuotes/DogQuotesPDF.pdf',
+                   #'./_data/DogQuotes/DogQuotesCSV.csv'
+                  ]
 
     # TODO: Use the Ingestor class to parse all files in the
     # quote_files variable
+    for file in quote_files:
+        if file.split('.')[-1] == 'docx':
+            DocxIngestor.parse(file)
+
     quotes = None
 
     images_path = "./_data/photos/dog/"
