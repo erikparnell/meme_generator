@@ -1,14 +1,16 @@
 import os
 import random
-from QuoteEngine import QuoteModel
+import argparse
+from MemeEngine import MemeGenerator
+from QuoteEngine import Quote, Ingestor
 
 # @TODO Import your Ingestor and MemeEngine classes
 
 
 def generate_meme(path=None, body=None, author=None):
     """ Generate a meme given a path and a quote """
-    img = None
-    quote = None
+    #img = None
+    #quote = None
 
     if path is None:
         images = "./_data/photos/dog/"
@@ -18,7 +20,7 @@ def generate_meme(path=None, body=None, author=None):
 
         img = random.choice(imgs)
     else:
-        img = path[0]
+        img = path # [0]
 
     if body is None:
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
@@ -33,9 +35,9 @@ def generate_meme(path=None, body=None, author=None):
     else:
         if author is None:
             raise Exception('Author Required if Body is Used')
-        quote = QuoteModel(body, author)
+        quote = Quote.QuoteModel(body, author)
 
-    meme = MemeEngine('./tmp')
+    meme = MemeGenerator.Meme('./tmp')
     path = meme.make_meme(img, quote.body, quote.author)
     return path
 
@@ -45,5 +47,13 @@ if __name__ == "__main__":
     # path - path to an image file
     # body - quote body to add to the image
     # author - quote author to add to the image
-    args = None
-    print(generate_meme(args.path, args.body, args.author))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--path", nargs="?", const=None, 
+                    help="path to an image file")
+    parser.add_argument("-b", "--body", nargs="?", const=None, 
+                    help="quote body to add to the image")                    
+    parser.add_argument("-a", "--author", nargs="?", const=None, 
+                    help="quote author to add to the image")                    
+    args = parser.parse_args()
+   
+    generate_meme(args.path, args.body, args.author)

@@ -1,4 +1,4 @@
-from .IngestorInterface import IngestorInterface
+from QuoteEngine.IngestorInterface import IngestorInterface
 from .Quote import QuoteModel
 from typing import List
 
@@ -18,8 +18,8 @@ class TextIngestor(IngestorInterface):
             lines = f.readlines()
 
         for line in lines:
-            parse = line.split('-')
-            new_quote = QuoteModel(parse[0], parse[1])
-            quotes.append(new_quote)
-
+            if line != "\n" and line != '' and line != '\x0c':
+                parse = line.split('-')
+                new_quote = QuoteModel(parse[0], parse[1])
+                quotes.append(new_quote)
         return quotes

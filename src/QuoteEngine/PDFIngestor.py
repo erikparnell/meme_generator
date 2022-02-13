@@ -1,7 +1,7 @@
 import subprocess
 from typing import List
 from .IngestorInterface import IngestorInterface
-import TextIngestor
+from QuoteEngine import TextIngestor
 from .Quote import QuoteModel
 
 
@@ -14,7 +14,7 @@ class PDFIngestor(IngestorInterface):
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 
-        subprocess.run('pdftotext ' + path)
-        base = path.split('.')[0]
+        subprocess.run(["pdftotext", path])
+        base = '.' + path.split('.')[1]
         new_path = base + '.txt'
-        return TextIngestor.parse(new_path)
+        return TextIngestor.TextIngestor.parse(new_path)

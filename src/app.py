@@ -1,6 +1,7 @@
 import random
 import os
 import requests
+from MemeEngine.MemeGenerator import Meme
 from flask import Flask, render_template, abort, request
 from QuoteEngine import DocxIngestor
 
@@ -8,7 +9,7 @@ from QuoteEngine import DocxIngestor
 
 app = Flask(__name__)
 
-meme = MemeEngine('./static')
+meme = Meme('./static')
 
 
 def setup():

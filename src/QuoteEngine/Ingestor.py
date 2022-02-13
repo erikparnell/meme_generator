@@ -1,14 +1,14 @@
-import IngestorInterface
-import DocxIngestor
-import CSVIngestor
-import PDFIngestor
-import TextIngestor
+from QuoteEngine import DocxIngestor, CSVIngestor, TextIngestor, PDFIngestor
+from .IngestorInterface import IngestorInterface
+
 from .Quote import QuoteModel
 from typing import List
 
 
 class Ingestor(IngestorInterface):
     '''https://knowledge.udacity.com/questions/559464'''
+    #def __init__(self):
+        #IngestorInterface.__init__()
     ingestors = [DocxIngestor, CSVIngestor, TextIngestor, PDFIngestor]
 
     @classmethod
