@@ -14,10 +14,10 @@ meme = MemeEngine('./static')
 def setup():
     """ Load all resources """
 
-    quote_files = [#'./_data/DogQuotes/DogQuotesTXT.txt',
+    quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
                    './_data/DogQuotes/DogQuotesDOCX.docx',
-                   #'./_data/DogQuotes/DogQuotesPDF.pdf',
-                   #'./_data/DogQuotes/DogQuotesCSV.csv'
+                   './_data/DogQuotes/DogQuotesPDF.pdf',
+                   './_data/DogQuotes/DogQuotesCSV.csv'
                   ]
 
     # TODO: Use the Ingestor class to parse all files in the
@@ -51,7 +51,7 @@ def meme_rand():
 
     img = None
     quote = None
-    path = meme.make_meme(img, quote.body, quote.author)
+    path = meme.output_meme(img, quote.body, quote.author)
     return render_template('meme.html', path=path)
 
 

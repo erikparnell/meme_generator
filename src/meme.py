@@ -1,11 +1,12 @@
 import os
 import random
+from QuoteEngine import QuoteModel
 
 # @TODO Import your Ingestor and MemeEngine classes
 
 
 def generate_meme(path=None, body=None, author=None):
-    """ Generate a meme given an path and a quote """
+    """ Generate a meme given a path and a quote """
     img = None
     quote = None
 
