@@ -6,7 +6,7 @@ class Meme:
 
     def __init__(self, output_dir):
         '''Insert docstring'''
-        self.out_dir = './memes'
+        self.out_dir = output_dir
 
     def make_meme(self, img_path, text, author, width=500) -> str:
         '''Insert docstring'''
@@ -21,14 +21,14 @@ class Meme:
         else:
             im_resized = im
 
-        font_type = ImageFont.truetype('FreeMono.ttf', 65)
+        font_type = ImageFont.truetype('FreeMono.ttf', 25)
         image_editable = ImageDraw.Draw(im_resized)
         image_editable.text(
             (
-                im_resized.size[0]*random.uniform(0.1, 0.3),
+                im_resized.size[0]*random.uniform(0.05, 0.1),
                 im_resized.size[1]*random.uniform(0.3, 0.9)
             ),
-            text + ' ' + author,
+            text + '\n' + '-' + author,
             fill=(255, 255, 255),
             font=font_type
         )
