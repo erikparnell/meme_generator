@@ -12,7 +12,7 @@ from meme import generate_meme
 
 app = Flask(__name__)
 
-meme = MemeGenerator.Meme('./tmp')  # or ./static ?
+#meme = MemeGenerator.Meme('./tmp')  # ./tmp or ./static ?
 
 
 def setup():
@@ -80,7 +80,9 @@ def meme_post():
     author = request.form['author']
 
     rand_num = random.randint(1, 100000)
-    tmp = f'./tmp/meme{rand_num}.png'
+    print(rand_num)
+    tmp = f'./static/meme{rand_num}.png'
+    print(tmp)
 
     r = requests.get(image_url)
 

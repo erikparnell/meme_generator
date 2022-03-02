@@ -21,7 +21,7 @@ class Meme:
         else:
             im_resized = im
 
-        font_type = ImageFont.truetype('FreeMono.ttf', 25)
+        font_type = ImageFont.truetype('arial.ttf', 25)
         image_editable = ImageDraw.Draw(im_resized)
         image_editable.text(
             (
@@ -32,7 +32,8 @@ class Meme:
             fill=(255, 255, 255),
             font=font_type
         )
-        
-        im.save(self.out_dir + '/meme.png')  # need to see if filename needs to be specified in these lines too
+        random_num = str(random.randint(0,100000000))
+        final_out_dir = self.out_dir + '/meme_' + random_num + '.png'
+        im.save(final_out_dir)  # need to see if filename needs to be specified in these lines too
 
         return self.out_dir
