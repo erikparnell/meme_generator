@@ -76,21 +76,23 @@ def meme_post():
     #    file and the body and author form paramaters.
     # 3. Remove the temporary saved image.
     image_url = request.form['image_url']
+    print(image_url)
     body = request.form['body']
     author = request.form['author']
 
     rand_num = random.randint(1, 100000)
     print(rand_num)
-    tmp = f'./static/meme{rand_num}.png'
+    absolute_parent_path = '/home/erik/Code/meme-generator/src'
+    tmp = f'{absolute_parent_path}/static/meme{rand_num}.png'
     print(tmp)
 
     r = requests.get(image_url)
 
     with open(tmp, 'wb') as img:
         img.write(r.content)
-
-    path = generate_meme(tmp, body, author)
-
+    
+    path = generate_meme(tmp, body, author) #failing here, PIL not using path OK or the image is bad, try to add absolute path
+    print(path)
     os.remove(tmp)
     return render_template('meme.html', path=path)
 

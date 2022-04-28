@@ -17,9 +17,9 @@ class Meme:
             scale_factor = width / im_width
             new_width = width
             new_height = int(im_height * scale_factor)
-            im_resized = im.resize([new_width, new_height])
+            im_resized = im.resize([new_width, new_height]) #maybe a hardcopy issue
         else:
-            im_resized = im
+            im_resized = im #maybe a hardcopy issue
 
         font_type = ImageFont.truetype('arial.ttf', 25)
         image_editable = ImageDraw.Draw(im_resized)
@@ -35,5 +35,5 @@ class Meme:
         random_num = str(random.randint(0,100000000))
         final_out_dir = self.out_dir + '/meme_' + random_num + '.png'
         im.save(final_out_dir)  # need to see if filename needs to be specified in these lines too
-
-        return self.out_dir
+        #NOT WRITING TEXT TO IMAGE
+        return final_out_dir

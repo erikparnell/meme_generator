@@ -11,7 +11,7 @@ def generate_meme(path=None, body=None, author=None):
     """ Generate a meme given a path and a quote """
     #img = None
     #quote = None
-
+    print(path, body, author)
     if path is None:
         images = "./_data/photos/dog/"
         imgs = []
@@ -20,9 +20,10 @@ def generate_meme(path=None, body=None, author=None):
 
         img = random.choice(imgs)
     else:
-        img = path[0]  # ? need index [0]?
-
+        img = path  # ? need index [0]?
+        print(img)
     if body is None:
+        print("thinks body is none")
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
                        './_data/DogQuotes/DogQuotesDOCX.docx',
                        './_data/DogQuotes/DogQuotesPDF.pdf',
@@ -34,10 +35,13 @@ def generate_meme(path=None, body=None, author=None):
         quote = random.choice(quotes)
     else:
         if author is None:
+            print("thinks author is none")
             raise Exception('Author Required if Body is Used')
-        quote = Quote.QuoteModel(body, author)
-
-    meme = MemeGenerator.Meme('./tmp')
+        quote = Quote.QuoteModel(body, author) #missing last else statement for when author and body is good
+        print(quote)
+            
+    print("got here")
+    meme = MemeGenerator.Meme('./static')
     path = meme.make_meme(img, quote.body, quote.author)
     return path
 
@@ -55,5 +59,5 @@ if __name__ == "__main__":
     parser.add_argument("-a", "--author", nargs="?", const=None, 
                     help="quote author to add to the image")                    
     args = parser.parse_args()
-   
+    print(args)
     generate_meme(args.path, args.body, args.author)
