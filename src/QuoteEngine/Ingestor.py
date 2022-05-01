@@ -6,9 +6,8 @@ from typing import List
 
 
 class Ingestor(IngestorInterface):
-    '''https://knowledge.udacity.com/questions/559464'''
-    #def __init__(self):
-        #IngestorInterface.__init__()
+    '''insert docstring'''
+
     ingestors = [DocxIngestor, CSVIngestor, TextIngestor, PDFIngestor]
 
     @classmethod
