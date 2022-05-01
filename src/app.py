@@ -57,14 +57,11 @@ def meme_post():
     """ Create a user defined meme """
 
     image_url = request.form['image_url']
-    print(image_url)
     body = request.form['body']
     author = request.form['author']
 
     rand_num = random.randint(1, 100000)
-    print(rand_num)
     tmp = f'./static/meme{rand_num}.png'
-    print(tmp)
 
     r = requests.get(image_url)
 
@@ -72,10 +69,9 @@ def meme_post():
         img.write(r.content)
 
     path = generate_meme(tmp, body, author)
-    print(path)
     os.remove(tmp)
     return render_template('meme.html', path=path)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)

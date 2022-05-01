@@ -6,7 +6,10 @@ from typing import List
 
 
 class Ingestor(IngestorInterface):
-    '''insert docstring'''
+    '''
+    Class which contains the various ingestor classes.
+    Contains the parse class method.
+    '''
 
     ingestors = [DocxIngestor, CSVIngestor, TextIngestor, PDFIngestor]
 

@@ -4,7 +4,7 @@ from typing import List
 
 
 class TextIngestor(IngestorInterface):
-    '''insert docstring'''
+    '''Class for handling TXT file types'''
     allowed_types = ['txt']
 
     @classmethod

@@ -5,11 +5,22 @@ import random
 class Meme:
 
     def __init__(self, output_dir):
-        '''Insert docstring'''
+        '''Initialize a meme'''
         self.out_dir = output_dir
 
     def make_meme(self, img_path, text, author, width=500) -> str:
-        '''Insert docstring'''
+        '''
+        Method that "makes" the meme and outputs the final path directory
+
+        Parameters:
+        img_path (string): The file path of the image to be memed
+        text (string): The text body of the quote
+        author (string): The name of the author of the quote
+        width (int): The integer value in pixels to not exceed image width
+
+        Returns:
+        The final output directory path of the meme
+        '''
         im = Image.open(img_path)
 
         im_width, im_height = im.size
