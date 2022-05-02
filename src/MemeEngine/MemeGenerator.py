@@ -1,5 +1,6 @@
 from PIL import Image, ImageFont, ImageDraw
 import random
+import textwrap
 
 
 class Meme:
@@ -32,14 +33,19 @@ class Meme:
         else:
             im_resized = im
 
-        font_type = ImageFont.truetype('arial.ttf', 25)
+        im_rez_width, im_rez_height= im_resized.size
+        font_size = 25
+        char_line_limit = int(im_rez_width / (font_size * 0.7))
+        wrapper = textwrap.TextWrapper(width=char_line_limit)
+        wrapped_text = wrapper.fill(text=text)
+        font_type = ImageFont.truetype('arial.ttf', font_size)
         image_editable = ImageDraw.Draw(im_resized)
         image_editable.text(
             (
                 im_resized.size[0]*random.uniform(0.05, 0.1),
-                im_resized.size[1]*random.uniform(0.3, 0.9)
+                im_resized.size[1]*random.uniform(0.1, 0.6)
             ),
-            text + '\n' + '-' + author,
+            wrapped_text + '\n' + '-' + author,
             fill=(255, 255, 255),
             font=font_type
         )
