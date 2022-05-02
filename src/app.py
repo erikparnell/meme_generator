@@ -55,8 +55,17 @@ def meme_form():
 @app.route('/create', methods=['POST'])
 def meme_post():
     """ Create a user defined meme """
-
+    
     image_url = request.form['image_url']
+    try:
+        img_data = requests.get(image_url)
+    except (
+        requests.exceptions.HTTPError,
+        requests.exceptions.ConnectionError,
+        requests.exceptions.InvalidURL
+    ):
+        print("Invalid URL, please enter valid image URL")
+        return "Invalid URL, please enter valid image URL"
     body = request.form['body']
     author = request.form['author']
 

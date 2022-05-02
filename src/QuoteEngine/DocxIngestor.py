@@ -5,7 +5,7 @@ import docx
 
 
 class DocxIngestor(IngestorInterface):
-    '''insert docstring'''
+    '''Class for handling DOCX file types'''
     allowed_types = ['docx']
 
     @classmethod

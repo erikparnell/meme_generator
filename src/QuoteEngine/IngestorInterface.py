@@ -5,7 +5,7 @@ from .Quote import QuoteModel
 
 
 class IngestorInterface(ABC):
-    '''insert docstring'''
+    '''Ingestor interface that checks that file type can be ingested'''
     allowed_types = []  # 'pdf', 'docx', 'txt', 'csv'
 
     @classmethod

@@ -6,7 +6,7 @@ from .Quote import QuoteModel
 
 
 class PDFIngestor(IngestorInterface):
-    '''insert docstring'''
+    '''Class for handling PDF file types'''
     allowed_types = ['pdf']
 
     @classmethod

@@ -10,7 +10,8 @@ the users web browser using the Flask framework.
 REQUIREMENTS
 -------------
 
-Ensure Python 3 is installed on the user's machine.
+Ensure Python 3 is installed on the user's machine. Consult the
+requirements.txt file. 
 
 DETAILED INSTRUCTIONS
 ----------------------

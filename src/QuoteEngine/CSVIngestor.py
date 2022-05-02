@@ -5,7 +5,7 @@ import pandas as pd
 
 
 class CSVIngestor(IngestorInterface):
-    '''insert docstring'''
+    '''Class for handling CSV file types'''
     allowed_types = ['csv']
 
     @classmethod
